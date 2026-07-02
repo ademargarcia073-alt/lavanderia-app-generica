@@ -1,0 +1,9 @@
+# gstack (https://github.com/garrytan/gstack) is installed locally as a Claude Code
+# skill set. It's a large, machine-specific, regenerable install (vendored clone +
+# node_modules + compiled binaries), so it's not committed to this repo — upstream's
+# own guidance is to avoid vendoring gstack into project repos.
+#
+# To reinstall on a fresh checkout:
+#   git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git .claude/skills/gstack
+#   cd .claude/skills/gstack && ./setup
+.claude/skills/
