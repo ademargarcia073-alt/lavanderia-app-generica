@@ -1,3 +1,5 @@
+node_modules
+
 # gstack (https://github.com/garrytan/gstack) is installed locally as a Claude Code
 # skill set. It's a large, machine-specific, regenerable install (vendored clone +
 # node_modules + compiled binaries), so it's not committed to this repo — upstream's
@@ -8,3 +10,25 @@
 #   cd .claude/skills/gstack && ./setup
 .claude/skills/
 .gstack/
+
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
