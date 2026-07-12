@@ -40,3 +40,17 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+
+## Deploying to Cloudflare Pages
+
+Set `DATABASE_URL`, `ORIGIN`, and `BETTER_AUTH_SECRET` in the Pages project's
+Settings → Environment variables (both Production and Preview) — these are
+never committed (`.env` is gitignored).
+
+`worker-configuration.d.ts` is generated locally by `bun run gen` (`wrangler
+types`), inferring the `Env` shape from your local `.env` file. **Do not put
+`wrangler types --check` back into the `build` script** — Cloudflare's build
+environment has no `.env` file, so `wrangler types` there always infers an
+empty `Env` interface, and the check will fail regardless of what you set in
+the dashboard. The committed type file is a local dev/editor convenience
+only; it isn't required for `vite build` to produce a correct bundle.
