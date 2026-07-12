@@ -23,3 +23,4 @@
 	<button formaction="?/signUpEmail">Register</button>
 </form>
 <p style="color: red">{form?.message ?? ''}</p>
+<p><a href="/forgot-password">¿Olvidaste tu contraseña?</a></p>
