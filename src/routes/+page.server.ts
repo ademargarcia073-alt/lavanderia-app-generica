@@ -5,7 +5,7 @@ import { auth } from '$lib/server/auth';
 
 export const load: PageServerLoad = (event) => {
 	if (!event.locals.user) {
-		return redirect(302, '/login');
+		return redirect(302, '/welcome');
 	}
 	return { user: event.locals.user };
 };

@@ -9,18 +9,14 @@
 <form method="post" action="?/signInEmail" use:enhance>
 	<label>
 		Email
-		<input type="email" name="email" />
+		<input type="email" name="email" required />
 	</label>
 	<label>
 		Password
-		<input type="password" name="password" />
-	</label>
-	<label>
-		Name (for registration)
-		<input name="name" />
+		<input type="password" name="password" required />
 	</label>
 	<button>Login</button>
-	<button formaction="?/signUpEmail">Register</button>
 </form>
 <p style="color: red">{form?.message ?? ''}</p>
 <p><a href="/forgot-password">¿Olvidaste tu contraseña?</a></p>
+<p>¿No tenés cuenta? <a href="/signup">Sign up</a></p>
