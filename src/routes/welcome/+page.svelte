@@ -4,7 +4,7 @@
 </script>
 
 <div class="screen">
-	<Card>
+	<Card tall>
 		<div class="logo-placeholder">logo del tenant</div>
 		<div>
 			<h1>Bienvenido</h1>

@@ -1,10 +1,14 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 
-	let { wide = false, children }: { wide?: boolean; children: Snippet } = $props();
+	let {
+		wide = false,
+		tall = false,
+		children
+	}: { wide?: boolean; tall?: boolean; children: Snippet } = $props();
 </script>
 
-<div class="card" class:wide>
+<div class="card" class:wide class:tall>
 	{@render children()}
 </div>
 
@@ -12,7 +16,6 @@
 	.card {
 		width: 100%;
 		max-width: 400px;
-		min-height: min(640px, calc(100vh - 48px));
 		margin: 0 auto;
 		background: var(--color-surface);
 		border: 1px solid var(--color-border-card);
@@ -24,9 +27,14 @@
 		gap: 18px;
 	}
 
+	/* Only screens where content should be pushed to the bottom (e.g.
+	   /welcome) opt into this — most screens size to their own content. */
+	.card.tall {
+		min-height: min(640px, calc(100vh - 48px));
+	}
+
 	.card.wide {
 		max-width: 680px;
-		min-height: auto;
 		border-radius: var(--radius-panel-card);
 		gap: 20px;
 	}
