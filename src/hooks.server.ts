@@ -2,6 +2,9 @@ import type { Handle } from '@sveltejs/kit';
 import { building } from '$app/environment';
 import { auth } from '$lib/server/auth';
 import { svelteKitHandler } from 'better-auth/svelte-kit';
+// Forces tenant.config.ts's fail-fast zod validation to run on every boot —
+// see config/tenant.config.ts for why this import needs to exist somewhere.
+import '../config/tenant.config';
 
 const handleBetterAuth: Handle = async ({ event, resolve }) => {
 	const session = await auth.api.getSession({ headers: event.request.headers });

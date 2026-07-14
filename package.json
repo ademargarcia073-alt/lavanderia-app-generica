@@ -34,6 +34,7 @@
 		"wrangler": "^4.97.0"
 	},
 	"dependencies": {
-		"resend": "^6.17.2"
+		"resend": "^6.17.2",
+		"zod": "^4.4.3"
 	}
 }
