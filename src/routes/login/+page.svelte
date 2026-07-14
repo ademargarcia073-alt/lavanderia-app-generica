@@ -19,4 +19,4 @@
 </form>
 <p style="color: red">{form?.message ?? ''}</p>
 <p><a href="/forgot-password">¿Olvidaste tu contraseña?</a></p>
-<p>¿No tenés cuenta? <a href="/signup">Sign up</a></p>
+<p>¿No tienes cuenta? <a href="/signup">Regístrate</a></p>

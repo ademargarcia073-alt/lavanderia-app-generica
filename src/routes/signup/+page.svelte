@@ -22,4 +22,4 @@
 	<button>Crear cuenta</button>
 </form>
 <p style="color: red">{form?.message ?? ''}</p>
-<p>¿Ya tenés cuenta? <a href="/login">Login</a></p>
+<p>¿Ya tienes cuenta? <a href="/login">Iniciar sesión</a></p>

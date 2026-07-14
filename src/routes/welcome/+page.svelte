@@ -9,7 +9,7 @@
 		<div>
 			<h1>Bienvenido</h1>
 			<p class="description">
-				Gestioná el lavado de tu ropa, seguí tus pedidos y recibí avisos cuando estén listos.
+				Gestiona el lavado de tu ropa, sigue tus pedidos y recibe avisos cuando estén listos.
 			</p>
 		</div>
 		<div class="actions">

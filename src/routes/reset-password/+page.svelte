@@ -9,10 +9,10 @@
 
 {#if data.invalid}
 	<p style="color: red">
-		El link no es válido o expiró. <a href="/forgot-password">Pedí uno nuevo</a>.
+		El link no es válido o expiró. <a href="/forgot-password">Pide uno nuevo</a>.
 	</p>
 {:else if !data.token}
-	<p style="color: red">Falta el token del link. Usá el link que te llegó por email.</p>
+	<p style="color: red">Falta el token del link. Usa el link que te llegó por email.</p>
 {:else}
 	<form method="post" use:enhance>
 		<input type="hidden" name="token" value={data.token} />
