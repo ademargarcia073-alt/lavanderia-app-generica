@@ -15,7 +15,6 @@
 			<h1>Un poco más sobre ti</h1>
 		</div>
 		<form method="post" use:enhance class="form">
-			<TextField label="Apellido" name="lastName" placeholder="Ej. Fernández" required />
 			<TextField label="Móvil" name="phone" placeholder="+591 700 00000" required />
 			<TextField label="Género" optionalLabel name="gender" placeholder="Seleccionar" />
 			<TextField

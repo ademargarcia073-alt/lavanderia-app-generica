@@ -22,6 +22,13 @@
       "when": 1783984132534,
       "tag": "0002_dear_diamondback",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1784070711148,
+      "tag": "0003_classy_molecule_man",
+      "breakpoints": true
     }
   ]
 }

@@ -8,7 +8,6 @@ export const contactInfo = pgTable('contact_info', {
 	userId: text('user_id')
 		.primaryKey()
 		.references(() => user.id, { onDelete: 'cascade' }),
-	lastName: text('last_name').notNull(),
 	phone: text('phone').notNull(),
 	gender: text('gender'),
 	birthDate: timestamp('birth_date'),

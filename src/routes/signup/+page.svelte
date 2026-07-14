@@ -12,7 +12,8 @@
 	<Card>
 		<h1>Crear cuenta</h1>
 		<form method="post" use:enhance class="form">
-			<TextField label="Nombre" name="name" placeholder="Ej. María Fernández" required />
+			<TextField label="Nombre" name="firstName" placeholder="Ej. María" required />
+			<TextField label="Apellido" name="lastName" placeholder="Ej. Fernández" required />
 			<TextField
 				label="Correo electrónico"
 				type="email"
