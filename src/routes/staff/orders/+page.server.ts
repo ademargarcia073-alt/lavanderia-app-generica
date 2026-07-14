@@ -1,8 +1,12 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import { db } from '$lib/server/db';
-import { order, ORDER_STATUSES } from '$lib/server/db/orders.schema';
+import { order, ORDER_STATUSES, type OrderStatus } from '$lib/server/db/orders.schema';
 import { desc, eq } from 'drizzle-orm';
+
+function isOrderStatus(value: string): value is OrderStatus {
+	return (ORDER_STATUSES as readonly string[]).includes(value);
+}
 
 export const load: PageServerLoad = async (event) => {
 	if (!event.locals.user) {
@@ -41,7 +45,7 @@ export const actions: Actions = {
 		const id = Number(formData.get('id'));
 		const status = formData.get('status')?.toString() ?? '';
 
-		if (!id || !ORDER_STATUSES.includes(status as (typeof ORDER_STATUSES)[number])) {
+		if (!id || !isOrderStatus(status)) {
 			return fail(400, { message: 'Pedido o estado inválido' });
 		}
 

@@ -15,7 +15,7 @@ export const order = pgTable('order', {
 	// real catalog grid is a separate, not-yet-numbered MVP task. This field
 	// is deliberately unstructured until that task defines the real schema.
 	description: text('description').notNull(),
-	status: text('status').notNull().default('received'),
+	status: text('status').notNull().default('received').$type<OrderStatus>(),
 	createdAt: timestamp('created_at').defaultNow().notNull(),
 	updatedAt: timestamp('updated_at')
 		.defaultNow()
