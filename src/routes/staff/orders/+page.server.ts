@@ -2,6 +2,7 @@ import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import { db } from '$lib/server/db';
 import { order, ORDER_STATUSES, type OrderStatus } from '$lib/server/db/orders.schema';
+import { requireStaff } from '$lib/server/require-staff';
 import { desc, eq } from 'drizzle-orm';
 
 function isOrderStatus(value: string): value is OrderStatus {
@@ -11,6 +12,9 @@ function isOrderStatus(value: string): value is OrderStatus {
 export const load: PageServerLoad = async (event) => {
 	if (!event.locals.user) {
 		return redirect(302, '/login');
+	}
+	if (!(await requireStaff(event))) {
+		return redirect(302, '/');
 	}
 
 	const orders = await db.select().from(order).orderBy(desc(order.createdAt));
@@ -23,7 +27,7 @@ export const actions: Actions = {
 	// real customer flow (garment grid, address, etc). That real flow is a
 	// separate, not-yet-numbered MVP task.
 	createTestOrder: async (event) => {
-		if (!event.locals.user) return fail(401, { message: 'No autenticado' });
+		if (!(await requireStaff(event))) return fail(403, { message: 'No autorizado' });
 
 		const formData = await event.request.formData();
 		const customerName = formData.get('customerName')?.toString().trim() ?? '';
@@ -39,7 +43,7 @@ export const actions: Actions = {
 	},
 
 	updateStatus: async (event) => {
-		if (!event.locals.user) return fail(401, { message: 'No autenticado' });
+		if (!(await requireStaff(event))) return fail(403, { message: 'No autorizado' });
 
 		const formData = await event.request.formData();
 		const id = Number(formData.get('id'));
