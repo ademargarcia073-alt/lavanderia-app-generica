@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import type { PageServerData } from './$types';
 	import Card from '$lib/components/Card.svelte';
 	import Button from '$lib/components/Button.svelte';
@@ -11,9 +10,7 @@
 	<Card wide>
 		<div class="header">
 			<h1>Hola, {data.user.name.split(' ')[0]}</h1>
-			<form method="post" action="?/signOut" use:enhance>
-				<button class="sign-out">Cerrar sesión</button>
-			</form>
+			<a class="profile-link" href="/perfil">Mi perfil</a>
 		</div>
 		<p class="subtitle">¿Qué necesitas lavar hoy?</p>
 		<div class="grid">
@@ -48,15 +45,16 @@
 		margin: 0;
 	}
 
-	.sign-out {
+	.profile-link {
 		font-family: var(--font-body);
 		font-size: 12px;
 		font-weight: 600;
 		color: var(--color-text-secondary);
-		background: none;
-		border: none;
-		cursor: pointer;
-		padding: 4px;
+		text-decoration: none;
+	}
+
+	.profile-link:hover {
+		color: var(--color-accent);
 	}
 
 	.subtitle {
