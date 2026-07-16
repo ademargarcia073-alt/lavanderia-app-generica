@@ -2,12 +2,13 @@ import { redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import type { PageServerLoad } from './$types';
 import { auth } from '$lib/server/auth';
+import { tenantConfig } from '../../config/tenant.config';
 
 export const load: PageServerLoad = (event) => {
 	if (!event.locals.user) {
 		return redirect(302, '/welcome');
 	}
-	return { user: event.locals.user };
+	return { user: event.locals.user, categorias: tenantConfig.categorias };
 };
 
 export const actions: Actions = {
