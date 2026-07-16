@@ -41,7 +41,7 @@ const rawConfig: TenantConfig = {
 	textosFaq: [
 		{
 			pregunta: '¿Cómo hago un pedido?',
-			respuesta: 'Contactanos por WhatsApp para coordinar la recolección de tu ropa.'
+			respuesta: 'Contáctanos por WhatsApp para coordinar la recolección de tu ropa.'
 		}
 	],
 	metodosPago: ['Efectivo', 'QR'],
