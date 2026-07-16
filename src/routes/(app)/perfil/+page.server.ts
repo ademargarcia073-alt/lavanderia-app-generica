@@ -6,16 +6,14 @@ import { auth } from '$lib/server/auth';
 import { eq } from 'drizzle-orm';
 
 export const load: PageServerLoad = async (event) => {
-	if (!event.locals.user) {
-		return redirect(302, '/login');
-	}
+	const { user } = await event.parent();
 
 	const [existingAddress] = await db
 		.select()
 		.from(address)
-		.where(eq(address.userId, event.locals.user.id));
+		.where(eq(address.userId, user.id));
 
-	return { user: event.locals.user, address: existingAddress ?? null };
+	return { address: existingAddress ?? null };
 };
 
 export const actions: Actions = {

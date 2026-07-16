@@ -16,7 +16,7 @@ vi.mock('$lib/server/db', () => ({
 	}
 }));
 
-vi.mock('../../../../config/tenant.config', () => ({
+vi.mock('../../../../../config/tenant.config', () => ({
 	tenantConfig: { categorias: ['Camisas', 'Jeans'] }
 }));
 

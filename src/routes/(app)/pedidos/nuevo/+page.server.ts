@@ -3,7 +3,7 @@ import type { Actions, PageServerLoad } from './$types';
 import { db } from '$lib/server/db';
 import { order } from '$lib/server/db/orders.schema';
 import { address } from '$lib/server/db/address.schema';
-import { tenantConfig } from '../../../../config/tenant.config';
+import { tenantConfig } from '../../../../../config/tenant.config';
 import { eq } from 'drizzle-orm';
 
 async function loadAddress(userId: string) {
@@ -12,19 +12,16 @@ async function loadAddress(userId: string) {
 }
 
 export const load: PageServerLoad = async (event) => {
-	if (!event.locals.user) {
-		return redirect(302, '/login');
-	}
+	const { user } = await event.parent();
 
 	const requested = event.url.searchParams.get('categoria');
 	const selectedCategoria = tenantConfig.categorias.includes(requested ?? '')
 		? (requested as string)
 		: tenantConfig.categorias[0];
 
-	const existingAddress = await loadAddress(event.locals.user.id);
+	const existingAddress = await loadAddress(user.id);
 
 	return {
-		categorias: tenantConfig.categorias,
 		selectedCategoria,
 		existingAddress
 	};
