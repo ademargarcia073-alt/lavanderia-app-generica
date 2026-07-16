@@ -15,7 +15,7 @@
 				<button class="sign-out">Cerrar sesión</button>
 			</form>
 		</div>
-		<p class="subtitle">¿Qué necesitás lavar hoy?</p>
+		<p class="subtitle">¿Qué necesitas lavar hoy?</p>
 		<div class="grid">
 			{#each data.categorias as categoria (categoria)}
 				<a class="category" href="/pedidos/nuevo?categoria={encodeURIComponent(categoria)}">
